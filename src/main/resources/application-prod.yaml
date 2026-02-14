@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT:5432}/${DB_NAME}?sslmode=require
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    show-sql: false
+
+  devtools:
+    restart:
+      enabled: false
+
+  data:
+    redis:
+      url: ${REDIS_URL:redis://localhost:6379}
+      timeout: 2000ms
+      ssl:
+        enabled: ${REDIS_SSL:false}
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 1800000
+
+
+
+  flyway:
+    enabled: false
+
+resend:
+  api-key: ${RESEND_API_KEY}
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+server:
+  servlet:
+    session:
+      cookie:
+        secure: true
+        same-site: none

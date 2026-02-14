@@ -1,0 +1,116 @@
+services:
+  postgres:
+    image: postgres:17.0
+    profiles:
+      - dev
+      - local
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    profiles:
+      - dev
+      - local
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
+  app-dev:
+    build: .
+    profiles:
+      - dev
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: on-failure
+
+  app-prod:
+    build: .
+    profiles:
+      - prod
+    ports:
+      - "8082:8080"
+    env_file:
+      - .env-prod
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: on-failure
+
+  redis:
+    image: redis:7.2-rc-alpine
+    profiles:
+      - dev
+      - prod
+      - local
+    restart: always
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - cache:/data
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redisinsights:
+    image: redislabs/redisinsight:latest
+    profiles:
+      - dev
+      - local
+    restart: always
+    ports:
+      - '5540:5540'
+    depends_on:
+      - redis
+    volumes:
+      - redis-insight:/db
+    networks:
+      - app-network
+
+volumes:
+  postgres_db:
+  cache:
+    driver: local
+  redis-insight:
+
+networks:
+  app-network:
+    driver: bridge
+
+
