@@ -28,7 +28,6 @@ import java.util.List;
 public class UserController {
 
     private final IUserService userService;
-    private final PasswordEncoder passwordEncoder;
     private final IUserTournamentService userTournamentService;
     private final IUserServiceCache userServiceCache;
 
@@ -58,11 +57,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}/tournaments")
-//    @PreAuthorize("isAuthenticated()")
     @Operation(summary = "get tournaments user registered at")
     public ResponseEntity<ApiResponse> getUserTournaments(@PathVariable Long id) {
         try {
-//            userService.isUserIdMatch(id, authentication.getName());
             List<UserTournamentProfileDto> userRegistrations = userTournamentService.getUserRegistrations(id);
             return ResponseEntity.ok(new ApiResponse("Wyniki wyszukiwania", userRegistrations));
         }catch (Exception e) {
