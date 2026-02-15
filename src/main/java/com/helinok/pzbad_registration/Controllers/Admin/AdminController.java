@@ -1,4 +1,3 @@
-// src/main/java/com/helinok/pzbad_registration/Controllers/Admin/AdminController.java
 package com.helinok.pzbad_registration.Controllers.Admin;
 
 import com.helinok.pzbad_registration.Dtos.GetAllUsersAdminDto;

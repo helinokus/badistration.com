@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Primary;
 public class JacksonConfig {
 
     @Bean
-    @Primary  // Для обычных HTTP запросов
+    @Primary
     public ObjectMapper webObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());

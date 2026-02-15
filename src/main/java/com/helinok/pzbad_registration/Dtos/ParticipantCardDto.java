@@ -16,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ParticipantCardDto {
-    // Основная информация
     private Long userId;
     private String firstName;
     private String lastName;
@@ -24,15 +23,12 @@ public class ParticipantCardDto {
     private String phoneNumber;
     private String teamName;
 
-    // Категории и партнерства
     private List<CategoryParticipationDto> categoryParticipations;
 
-    // Дополнительная информация для модератора
     private RegistrationStatus status;
     private boolean isPaid;
     private LocalDateTime registrationTime;
 
-    // Вычисляемые поля
     public String getFullName() {
         return firstName + " " + lastName;
     }

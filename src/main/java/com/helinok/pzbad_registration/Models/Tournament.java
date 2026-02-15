@@ -1,4 +1,3 @@
-// src/main/java/com/helinok/pzbad_registration/Models/Tournament.java
 package com.helinok.pzbad_registration.Models;
 
 import com.helinok.pzbad_registration.Enums.GameCategories;

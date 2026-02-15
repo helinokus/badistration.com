@@ -132,7 +132,6 @@ public class UserTournamentController {
 
 
 
-    // Pobierz moje rejestracje
     @GetMapping("/my-registrations")
     @PreAuthorize("isAuthenticated()")
     @Operation(summary = "get my registrations on tournament")
@@ -147,7 +146,6 @@ public class UserTournamentController {
         }
     }
 
-    // Anuluj rejestrację
     @DeleteMapping("/{registrationId}/cancel")
     @PreAuthorize("isAuthenticated()")
     @Operation(summary = "cancel registration for tournament by id")
@@ -200,7 +198,6 @@ public class UserTournamentController {
         }
     }
 
-    // Potwierdź płatność
     @PatchMapping("/{registrationId}/payment")
     @PreAuthorize("hasAnyRole('MODERATOR', 'ADMIN')")
     @Operation(summary = "confirm payment (useless)")
@@ -246,7 +243,6 @@ public class UserTournamentController {
         }
     }
 
-    // Helper method do konwersji na DTO
     private UserTournamentProfileDto convertToDto(UserTournament registration) {
         return UserTournamentProfileDto.builder()
                 .userName(registration.getUser().getFullName())

@@ -1,4 +1,3 @@
-// src/main/java/com/helinok/pzbad_registration/Repositories/UserRepository.java
 package com.helinok.pzbad_registration.Repositories;
 
 import com.helinok.pzbad_registration.Models.User;

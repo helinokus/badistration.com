@@ -48,7 +48,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         final String username = jwtService.extractUsername(jwt);
 
-        // Если username есть и пользователь еще не аутентифицирован
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             var userDetails = this.userDetailsService.loadUserByUsername(username);
 

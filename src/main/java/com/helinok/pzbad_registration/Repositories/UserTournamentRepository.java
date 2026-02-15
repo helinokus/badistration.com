@@ -1,4 +1,3 @@
-// src/main/java/com/helinok/pzbad_registration/Repositories/UserTournamentRepository.java
 package com.helinok.pzbad_registration.Repositories;
 
 import com.helinok.pzbad_registration.Enums.GameCategories;

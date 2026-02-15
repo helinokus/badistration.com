@@ -35,7 +35,7 @@ public class PartnershipService implements IPartnershipService {
     private final UserTournamentRepository userTournamentRepository;
 
     @Override
-    public void declinePartnership(Long partnershipId, String username) { // by partner
+    public void declinePartnership(Long partnershipId, String username) {
         Partnership partnershipByCategoryAndTournament =
                 partnershipRepository.findById(partnershipId)
                         .orElseThrow(() -> new NotFoundException("Nie znaleziono partnerstwa"));

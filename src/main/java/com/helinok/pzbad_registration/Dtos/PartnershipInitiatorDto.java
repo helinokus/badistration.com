@@ -20,7 +20,6 @@ public class PartnershipInitiatorDto {
     private GameCategories category;
     private PartnershipStatus status;
 
-    // Информация о партнере (не о текущем пользователе)
     private Long partnerId;
     private String partnerName;
     private String partnerEmail;
@@ -28,8 +27,7 @@ public class PartnershipInitiatorDto {
     private LocalDateTime createdAt;
     private LocalDateTime respondedAt;
 
-    // Для UI
-    private boolean canAccept;    // может ли текущий пользователь принять
-    private boolean canDecline;   // может ли отклонить
-    private boolean canCancel;    // может ли отменить
+    private boolean canAccept;
+    private boolean canDecline;
+    private boolean canCancel;
 }

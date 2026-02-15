@@ -189,12 +189,10 @@ public class TournamentDataExportService implements ITournamentDataExportService
         for (RecentRegistrationDto dto : data) {
             Row row = sheet.createRow(rowNum++);
 
-            // Разбиваем userName на имя и фамилию
             String[] nameParts = dto.getUserName().split(" ", 2);
             String firstName = nameParts.length > 0 ? nameParts[0] : "";
             String lastName = nameParts.length > 1 ? nameParts[1] : "";
 
-            // Разбиваем partnerName на имя и фамилию (если есть партнер)
             String partnerFirstName = "";
             String partnerLastName = "";
             if (dto.getPartnerName() != null && !dto.getPartnerName().isEmpty()) {

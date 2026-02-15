@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AcceptPartnershipDto {
     private Long partnershipId;
-    private Long tournamentId; // for navigate to tournament
-    private Long initiatorId; // for display initiator
+    private Long tournamentId;
+    private Long initiatorId;
     private GameCategories category;
 }

@@ -1,4 +1,3 @@
-// src/main/java/com/helinok/pzbad_registration/Models/UserTournament.java
 package com.helinok.pzbad_registration.Models;
 
 import com.helinok.pzbad_registration.Enums.GameCategories;
@@ -7,7 +6,6 @@ import com.helinok.pzbad_registration.Enums.RegistrationStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.stream.Collectors;
@@ -54,9 +52,9 @@ public class UserTournament {
 
     public Set<GameCategories> getPartnershipCategories() {
         return user.getAllPartnerships().stream()
-                .filter(p -> p.getTournament().equals(tournament))           // В этом турнире
-                .filter(p -> p.getStatus() == PartnershipStatus.CONFIRMED)   // Подтвержденные
-                .filter(p -> getGameCategories().contains(p.getCategory()))           // Есть в моих категориях
+                .filter(p -> p.getTournament().equals(tournament))
+                .filter(p -> p.getStatus() == PartnershipStatus.CONFIRMED)
+                .filter(p -> getGameCategories().contains(p.getCategory()))
                 .map(Partnership::getCategory)
                 .collect(Collectors.toSet());
     }
@@ -85,7 +83,7 @@ public class UserTournament {
 
     public void addCategory(GameCategories category) {
         if (!canAddCategory(category)) {
-            return; // Категория уже существует
+            return;
         }
         RegisteredCategory registeredCat = new RegisteredCategory();
         registeredCat.setUserTournament(this);

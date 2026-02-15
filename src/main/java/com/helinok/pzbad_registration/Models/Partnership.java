@@ -1,4 +1,3 @@
-// src/main/java/com/helinok/pzbad_registration/Models/Partnership.java
 package com.helinok.pzbad_registration.Models;
 
 import com.helinok.pzbad_registration.Enums.GameCategories;
@@ -33,11 +32,11 @@ public class Partnership {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player1_id", nullable = false)
-    private User player1; // Инициатор приглашения
+    private User player1;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player2_id", nullable = false)
-    private User player2; // Приглашенный игрок
+    private User player2;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)

@@ -168,7 +168,7 @@ public class TournamentService implements ITournamentService {
         LocalDateTime dateFrom = now.plusDays(daysFrom);
         LocalDateTime dateTo = now.plusDays(daysTo);
 
-       return allTournaments.stream().filter(e ->  { //Date of tournament
+       return allTournaments.stream().filter(e ->  {
             LocalDateTime date = e.getDateOfTournament();
             return date.isAfter(dateFrom) && date.isBefore(dateTo);
         }).filter(e -> {

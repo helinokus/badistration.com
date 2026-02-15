@@ -1,7 +1,6 @@
 package com.helinok.pzbad_registration.Enums;
 
 public enum GameCategories {
-    // Юношеские категории (Underage)
     MS_U11("MS U11 (Boys Singles Under 11)"),
     MS_U13("MS U13 (Boys Singles Under 13)"),
     MS_U15("MS U15 (Boys Singles Under 15)"),
@@ -42,7 +41,6 @@ public enum GameCategories {
     XD_U21("XD U21 (Mixed Doubles Under 21)"),
     XD_U23("XD U23 (Mixed Doubles Under 23)"),
 
-    // Категории по уровню
     MS_OPEN("MS Open (Men Singles Open)"),
     MS_A("MS A (Men Singles A Class)"),
     MS_B("MS B (Men Singles B Class)"),
@@ -68,7 +66,6 @@ public enum GameCategories {
     XD_B("XD B (Mixed Doubles B Class)"),
     XD_C("XD C (Mixed Doubles C Class)"),
 
-    // Возрастные категории (Over age)
     MS_18PLUS("MS 18+ (Men Singles 18 and over)"),
     MS_30PLUS("MS 30+ (Men Singles 30 and over)"),
     MS_40PLUS("MS 40+ (Men Singles 40 and over)"),

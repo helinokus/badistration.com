@@ -112,7 +112,6 @@ public class PartnershipController {
             Authentication auth
     ){
         try {
-
             User currentUser = userService.findUserEntityByEmail(auth.getName());
             Partnership partnership = partnershipService.getPartnershipById(partnershipId, currentUser);
             partnershipService.cancelPartnership(partnershipId, auth.getName());

@@ -281,12 +281,10 @@ public class TournamentRegistrationFacade implements ITournamentRegistrationFaca
                 partnershipRepository.findPartnershipByCategoryAndTournament(
                         dto.getTournamentId(), dto.getCategory(), initiatorId, dto.getPartnerId()
                 );
-        // Проверка на то, выслано ли партнерство
         if (partnershipByCategoryAndTournament != null && partnershipByCategoryAndTournament.getStatus() == PartnershipStatus.PENDING) {
             throw new ConflictException("Zaproszenie zostało już wysłane do partnera");
         }
 
-        //Проверка на то, играет ли человек уже эту категорю (зарегистрирован ли)?
         if (userTournamentService.isUserAvailableForCategory(partner, tournament, dto.getCategory())) {
             Partnership partnership = new Partnership();
             partnership.setTournament(tournament);
@@ -321,7 +319,6 @@ public class TournamentRegistrationFacade implements ITournamentRegistrationFaca
             throw new NotFoundException("Nie znalazłem tego partnerstwa");
         }
 
-        // Security check: ensure accepterId matches player2 from partnership
         if (!Objects.equals(partnership.getPlayer2().getId(), accepterId)) {
             throw new ConflictException("You are not allowed to accept this partnership");
         }
@@ -343,11 +340,9 @@ public class TournamentRegistrationFacade implements ITournamentRegistrationFaca
             throw new ConflictException("Partnerstwo nie posiada statusu PENDING, tylko ma " +
                     partnership.getStatus());
         }
-        // Note: Redundant check removed - already verified above
         if (!Objects.equals(partnership.getPlayer2().getId(), partner.getId())) {
             throw new ConflictException("Id partnera nie zgadzają się");
         }
-        //Accept for users
         if (userTournamentService.isUserRegisteredForTournament(partner, tournament)) {
             acceptNewCategoryForPartner(accepterId, dto);
             acceptNewCategoryForInitiator(dto);
@@ -471,7 +466,6 @@ public class TournamentRegistrationFacade implements ITournamentRegistrationFaca
                 });
     }
 
-    // ========== HELPERS ==========
 
     private UserTournament findById(Long id) {
         return userTournamentRepository.findById(id)

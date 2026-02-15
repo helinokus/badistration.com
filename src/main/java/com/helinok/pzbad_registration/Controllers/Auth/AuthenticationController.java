@@ -78,7 +78,7 @@ public class AuthenticationController {
                 .httpOnly(true)
                 .secure(cookieSecure)
                 .path("/")
-                .maxAge(0)  // Удаляем cookie
+                .maxAge(0)
                 .sameSite(cookieSameSite)
                 .domain(".badistration.com")
                 .build();

@@ -96,7 +96,6 @@ public class UserService implements IUserService {
 
         User save = userRepository.save(user);
 
-        //Work with caching
         userServiceCache.evictAllUsersCaches();
         userServiceCache.getCacheAllUsersAdminDtos();
         userServiceCache.getCacheAllUsersDto();
@@ -117,7 +116,6 @@ public class UserService implements IUserService {
         userRepository.save(user);
     }
 
-//    @CacheEvict(value = "USER_CACHE_BY_ID", key = "#id")
     @Override
     public void deactivateUser(Long id) {
         User user = findUserEntityById(id);
