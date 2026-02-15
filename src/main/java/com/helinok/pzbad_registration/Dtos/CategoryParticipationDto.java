@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoryParticipationDto {
     private GameCategories category;
-    private boolean isDoubles;  // true если это парная категория
-    private PartnerInfoDto partner; // null если играет индивидуально
+    private boolean isDoubles;
+    private PartnerInfoDto partner;
 }

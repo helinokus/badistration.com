@@ -23,7 +23,7 @@ public class JacksonConfig {
     }
 
     @Bean
-    @Qualifier("redisObjectMapper")  // Для Redis
+    @Qualifier("redisObjectMapper")
     public ObjectMapper redisObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
