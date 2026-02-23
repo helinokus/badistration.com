@@ -68,8 +68,8 @@ public class UserServiceCache implements IUserServiceCache {
 
     @CachePut(value = "users:dto", key = "#userDto.id")
     @Override
-    public void createUserCache(UserDto userDto) {
-
+    public UserDto createUserCache(UserDto userDto) {
+        return userDto;
     }
 
     @Cacheable(value = "users:listAllAdmin", key = "'all-users-admin'")

@@ -57,8 +57,6 @@ public class TournamentServiceCache implements ITournamentServiceCache{
 
 
 
-
-
     @CacheEvict(value = "tournaments:listAll", allEntries = true)
     @Override
     public void evictAllTournaments(){

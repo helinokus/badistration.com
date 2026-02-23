@@ -19,7 +19,7 @@ public interface IUserServiceCache {
     void evictAllUsersCaches();
 
     List<GetAllUsersDto> getCacheAllUsersDto();
-    void createUserCache(UserDto userDto);
+    UserDto createUserCache(UserDto userDto);
 
     List<GetAllUsersAdminDto> getCacheAllUsersAdminDtos();
 
