@@ -1,5 +1,6 @@
 INSERT INTO users (id, email, password, first_name, last_name, birth_date, phone_number, team_name, is_active, registration_date) VALUES
                               -- Organizers & Moderators
+                              (1, 'admin@gmail.com', '$2a$10$bJqAOt264VJHJUNMaImNbeJr1Of.dJEvG96Wb5nu.woyveogtnUnm', 'Vlad', 'Yemets', '1985-03-20', '+1', 'SKB Kraków', true, '2024-01-05 11:00:00'),
                               (2, 'moderator@gmail.com', '$2a$10$0dtU0bI1DHhmLqNg3v1HQOo2nmmgSNTdoqFk.Pfe4zkreEVaFUPae', 'Anna', 'Nowak', '1985-03-20', '+48502345678', 'SKB Kraków', true, '2024-01-05 11:00:00'),
                               (3, 'turnieje@gmail.com', '$2a$10$0dtU0bI1DHhmLqNg3v1HQOo2nmmgSNTdoqFk.Pfe4zkreEVaFUPae', 'Piotr', 'Wiśniewski', '1982-07-10', '+48503456789', 'UKS Hubertus Poznań', true, '2024-01-10 09:00:00'),
 
@@ -31,6 +32,12 @@ INSERT INTO users (id, email, password, first_name, last_name, birth_date, phone
                               (24, 'marek.rutkowski@onet.pl', '$2a$10$0dtU0bI1DHhmLqNg3v1HQOo2nmmgSNTdoqFk.Pfe4zkreEVaFUPae', 'Marek', 'Rutkowski', '1965-08-05', '+48524567890', 'KKB Warszawa', true, '2024-03-30 08:15:00'),
                               (25, 'dorota.sikora@gmail.com', '$2a$10$0dtU0bI1DHhmLqNg3v1HQOo2nmmgSNTdoqFk.Pfe4zkreEVaFUPae', 'Dorota', 'Sikora', '1968-12-12', '+48525678901', 'LKS Strzelce Opolskie', true, '2024-03-31 12:00:00')
 ON CONFLICT (id) DO NOTHING;
+
+insert into roles (id, name) values
+                                 (1, 'ROLE_USER'),
+                                 (2, 'ROLE_MODERATOR'),
+                                 (3, 'ROLE_ADMIN');
+
 
 
 INSERT INTO users_roles (user_id, role_id) VALUES
@@ -296,13 +303,3 @@ INSERT INTO partnership (id, player1_id, player2_id, tournament_id, category, st
 ON CONFLICT (id) DO NOTHING;
 
 
--- =====================================================
--- 11. EXPORT HISTORY
--- =====================================================
-INSERT INTO export_history (id, tournament_id, user_id, export_type, stamp_of_export, export_count, notes) VALUES
-                                                                                                               (1, 1, 1, 'FULL', '2026-02-28 10:00:00', 1, 'Pierwszy eksport przed zamknięciem rejestracji'),
-                                                                                                               (2, 2, 3, 'FULL', '2026-03-25 14:30:00', 1, 'Eksport startowy'),
-                                                                                                               (3, 2, 3, 'NEW_REGISTERED', '2026-03-28 09:00:00', 2, 'Nowi zarejestrowani po pierwszym eksporcie'),
-                                                                                                               (4, 3, 1, 'FULL', '2026-04-01 11:00:00', 1, 'Lista startowa GP'),
-                                                                                                               (5, 3, 2, 'RANGED_REGISTERED', '2026-04-05 16:00:00', 2, 'Rejestracje z ostatniego tygodnia')
-ON CONFLICT (id) DO NOTHING;

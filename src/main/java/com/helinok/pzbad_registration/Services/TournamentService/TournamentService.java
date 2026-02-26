@@ -118,6 +118,7 @@ public class TournamentService implements ITournamentService {
         tournament.setMaxPlayers(dto.getMaxPlayers());
         tournament.setEntryFee(dto.getEntryFee());
         tournament.setMaxCategoriesToPlay(dto.getMaxCategoriesToPlay());
+        tournament.setClosed(dto.isClosed());
 
         log.info("setted in service");
 
